@@ -1,0 +1,55 @@
+name: Weekly AI Standards Catalog Sync
+
+on:
+  schedule:
+    # Runs every Monday at 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pydantic requests pyyaml
+
+      - name: Check for upstream standards drift
+        id: check_drift
+        continue-on-error: true
+        run: |
+          python skills/armor/scripts/catalog/refresh_catalog.py --check-only
+
+      - name: Refresh catalog if drift detected
+        if: steps.check_drift.outcome == 'failure' || github.event_name == 'workflow_dispatch'
+        run: |
+          python skills/armor/scripts/catalog/refresh_catalog.py
+          cp -r skills/armor/references/ai_standards/* skills/armor/scripts/armor/data/ai_standards/
+
+      - name: Create Pull Request with updated catalog
+        if: steps.check_drift.outcome == 'failure' || github.event_name == 'workflow_dispatch'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore(catalog): sync upstream AI/agentic standards catalog"
+          title: "chore(catalog): sync upstream AI/agentic standards catalog"
+          body: |
+            Automated content-addressed sync of the 5 AI/agentic standards sources:
+            - EU AI Act (CELLAR)
+            - NIST AI RMF (100-1 & 600-1)
+            - MITRE ATLAS
+            - OWASP LLM Top 10 (2025)
+            - AI Incident Database (AIID)
+          branch: chore/catalog-sync
+          delete-branch: true

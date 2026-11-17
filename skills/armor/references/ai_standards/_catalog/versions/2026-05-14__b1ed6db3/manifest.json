@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-11-16T08:50:10Z",
+  "totals": {
+    "guardrails": 12,
+    "sub_guardrails": 53
+  },
+  "sources": {
+    "ai-incident-database": {
+      "version": "2026-05-12__pinned",
+      "sha": ""
+    },
+    "eu-ai-act": {
+      "version": "2026-05-12__pinned",
+      "sha": ""
+    },
+    "mitre-atlas": {
+      "version": "2026-05-12__pinned",
+      "sha": ""
+    },
+    "nist-ai-rmf": {
+      "version": "2026-05-12__pinned",
+      "sha": ""
+    },
+    "owasp-llm-top10": {
+      "version": "2026-05-12__pinned",
+      "sha": ""
+    }
+  }
+}

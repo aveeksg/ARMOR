@@ -1,0 +1,1446 @@
+{
+  "count": 53,
+  "source_sha": "7c2a70b337035eedaa5e05aff190379f930c19b3ba76d09b26d2bb93a8745b45",
+  "by_category": {
+    "Risk & impact assessment": 5,
+    "Data governance": 5,
+    "Transparency & disclosure": 4,
+    "Human oversight": 4,
+    "Robustness & accuracy": 5,
+    "Adversarial security": 5,
+    "Privacy & data protection": 4,
+    "Fairness & non-discrimination": 4,
+    "Content safety": 4,
+    "Logging, monitoring & incident response": 5,
+    "Supply-chain & component integrity": 4,
+    "Agentic autonomy & action safety": 4
+  },
+  "sub_guardrails": [
+    {
+      "number": "GR-01.1",
+      "category": "Risk & impact assessment",
+      "description": "Classify AI system risk tier and intended purpose prior to deployment, documenting reasonably foreseeable misuse and affected populations.",
+      "implementation_hints": "Maintain a machine-readable system risk card or manifest in repo config specifying risk tier, intended purpose, and out-of-scope uses.",
+      "verification_test": "Verify that a structured risk classification configuration or manifest exists and is validated before model or agent execution.",
+      "applicability": "any system; pre-deployment",
+      "standard_references": "EU AI Act Art 6, 9, 27 | NIST GOVERN-1, MAP-1, MAP-3, MAP-5 | ATLAS AML.M0017 | MIT 7.3. Lack of capability or robustness; 5.1. Overreliance and unsafe use",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          6,
+          9,
+          27
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-1",
+          "MAP-1",
+          "MAP-3",
+          "MAP-5"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [
+          "AML.M0017"
+        ],
+        "mit_subdomains": [
+          "7.3. Lack of capability or robustness",
+          "5.1. Overreliance and unsafe use"
+        ]
+      }
+    },
+    {
+      "number": "GR-01.2",
+      "category": "Risk & impact assessment",
+      "description": "Maintain a continuous risk register and iterative risk management lifecycle across design, development, and post-deployment changes.",
+      "implementation_hints": "Enforce risk register schema checks in CI or policy-as-code gates when prompts, models, or tools change.",
+      "verification_test": "Verify automated validation of risk register entries or policy checks tied to model/agent configuration updates.",
+      "applicability": "any AI system",
+      "standard_references": "EU AI Act Art 9 | NIST GOVERN-1, MANAGE-1, MANAGE-2 | MIT 7.1. AI pursuing its own goals in conflict with human goals or values",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          9
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-1",
+          "MANAGE-1",
+          "MANAGE-2"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "7.1. AI pursuing its own goals in conflict with human goals or values"
+        ]
+      }
+    },
+    {
+      "number": "GR-01.3",
+      "category": "Risk & impact assessment",
+      "description": "Perform fundamental rights, safety, and downstream impact assessments for high-impact or customer-facing AI deployments.",
+      "implementation_hints": "Include impact assessment assertions and threshold gates in deployment readiness checks.",
+      "verification_test": "Check for impact assessment gate logic or pre-flight validation prior to enabling high-impact workflows.",
+      "applicability": "high-risk or customer-facing AI systems",
+      "standard_references": "EU AI Act Art 9, 27 | NIST MAP-2, MAP-5, MEASURE-2 | MIT 6.1. Power centralization and unfair distribution of benefits",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          9,
+          27
+        ],
+        "nist_ai_rmf_functions": [
+          "MAP-2",
+          "MAP-5",
+          "MEASURE-2"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "6.1. Power centralization and unfair distribution of benefits"
+        ]
+      }
+    },
+    {
+      "number": "GR-01.4",
+      "category": "Risk & impact assessment",
+      "description": "Define explicit operational boundaries, capability limits, and refusal conditions for out-of-domain requests.",
+      "implementation_hints": "Implement domain/topic classifiers or boundary guards in the request intake pipeline before invoking the model.",
+      "verification_test": "Verify input routing or domain boundary enforcement that rejects or deflects out-of-scope queries.",
+      "applicability": "all LLM and generative AI systems",
+      "standard_references": "EU AI Act Art 9, 13 | NIST MAP-3, MANAGE-3 | OWASP LLM01, LLM09 | ATLAS AML.M0015 | MIT 5.1. Overreliance and unsafe use",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          9,
+          13
+        ],
+        "nist_ai_rmf_functions": [
+          "MAP-3",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM09"
+        ],
+        "atlas_mitigations": [
+          "AML.M0015"
+        ],
+        "mit_subdomains": [
+          "5.1. Overreliance and unsafe use"
+        ]
+      }
+    },
+    {
+      "number": "GR-01.5",
+      "category": "Risk & impact assessment",
+      "description": "Gate release and runtime activation on quantitative risk acceptance thresholds and sign-off controls.",
+      "implementation_hints": "Enforce automated evaluation score thresholds before promoting models, prompts, or agent workflows.",
+      "verification_test": "Verify threshold-check functions that block execution or deployment when evaluation metrics fall below required bounds.",
+      "applicability": "any production AI system",
+      "standard_references": "EU AI Act Art 9, 43 | NIST GOVERN-4, MEASURE-4, MANAGE-4 | MIT 7.3. Lack of capability or robustness",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          9,
+          43
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-4",
+          "MEASURE-4",
+          "MANAGE-4"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "7.3. Lack of capability or robustness"
+        ]
+      }
+    },
+    {
+      "number": "GR-02.1",
+      "category": "Data governance",
+      "description": "Track dataset, corpus, and retrieval index provenance, lineage, and licensing metadata across ingestion pipelines.",
+      "implementation_hints": "Attach source URI, content SHA256 hash, timestamp, and license fields to ingested documents and vector store records.",
+      "verification_test": "Verify that ingestion and indexing functions record cryptographic hashes and provenance metadata per document.",
+      "applicability": "systems ingesting training, fine-tuning, or RAG data",
+      "standard_references": "EU AI Act Art 10, 53 | NIST MAP-2, MEASURE-2 | OWASP LLM04, LLM08 | ATLAS AML.M0007 | MIT 4.3. Lack of transparency or interpretability",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10,
+          53
+        ],
+        "nist_ai_rmf_functions": [
+          "MAP-2",
+          "MEASURE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM04",
+          "LLM08"
+        ],
+        "atlas_mitigations": [
+          "AML.M0007"
+        ],
+        "mit_subdomains": [
+          "4.3. Lack of transparency or interpretability"
+        ]
+      }
+    },
+    {
+      "number": "GR-02.2",
+      "category": "Data governance",
+      "description": "Validate data quality, schema conformance, and completeness prior to indexing, embedding, or model consumption.",
+      "implementation_hints": "Use strict schema validation (e.g., Pydantic) and null/corruption checks on all ingested records.",
+      "verification_test": "Confirm presence of schema validation and rejection handling in data loading and RAG ingestion paths.",
+      "applicability": "systems ingesting external or structured data",
+      "standard_references": "EU AI Act Art 10 | NIST MEASURE-2, MANAGE-2 | OWASP LLM04, LLM08 | ATLAS AML.M0007, AML.M0014 | MIT 7.3. Lack of capability or robustness",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM04",
+          "LLM08"
+        ],
+        "atlas_mitigations": [
+          "AML.M0007",
+          "AML.M0014"
+        ],
+        "mit_subdomains": [
+          "7.3. Lack of capability or robustness"
+        ]
+      }
+    },
+    {
+      "number": "GR-02.3",
+      "category": "Data governance",
+      "description": "Scan training, fine-tuning, and RAG corpora for data poisoning, backdoor triggers, and anomalous payloads.",
+      "implementation_hints": "Run anomaly detection, sanitization filters, and integrity verification over documents before embedding.",
+      "verification_test": "Verify sanitization and poisoning detection filters execute on untrusted corpus inputs prior to storage.",
+      "applicability": "RAG, fine-tuning, and knowledge-grounded systems",
+      "standard_references": "EU AI Act Art 10, 15 | NIST MEASURE-2, MANAGE-3 | OWASP LLM04, LLM08 | ATLAS AML.M0006, AML.M0007, AML.M0014 | MIT 2.2. AI system security vulnerabilities and attacks",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM04",
+          "LLM08"
+        ],
+        "atlas_mitigations": [
+          "AML.M0006",
+          "AML.M0007",
+          "AML.M0014"
+        ],
+        "mit_subdomains": [
+          "2.2. AI system security vulnerabilities and attacks"
+        ]
+      }
+    },
+    {
+      "number": "GR-02.4",
+      "category": "Data governance",
+      "description": "Enforce tenant isolation and access-control filtering on vector stores, embeddings, and retrieved context chunks.",
+      "implementation_hints": "Bind caller principal/ACL attributes to retrieval queries so cross-tenant chunks are never injected into prompts.",
+      "verification_test": "Verify that vector/document retrieval functions require and filter by caller authorization scope or tenant ID.",
+      "applicability": "multi-tenant or access-controlled RAG systems",
+      "standard_references": "EU AI Act Art 10 | NIST GOVERN-6, MANAGE-3 | OWASP LLM02, LLM08 | ATLAS AML.M0018 | MIT 1.2. Privacy violations",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-6",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM02",
+          "LLM08"
+        ],
+        "atlas_mitigations": [
+          "AML.M0018"
+        ],
+        "mit_subdomains": [
+          "1.2. Privacy violations"
+        ]
+      }
+    },
+    {
+      "number": "GR-02.5",
+      "category": "Data governance",
+      "description": "Implement retention schedules, right-to-erasure purge routines, and versioned snapshots for datasets and embeddings.",
+      "implementation_hints": "Provide deterministic delete-by-source-ID and TTL expiration jobs across document stores and caches.",
+      "verification_test": "Verify existence of TTL/retention enforcement or document deletion routines in storage modules.",
+      "applicability": "systems persisting user or enterprise data",
+      "standard_references": "EU AI Act Art 10 | NIST GOVERN-1, MANAGE-4 | OWASP LLM02 | MIT 1.2. Privacy violations",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-1",
+          "MANAGE-4"
+        ],
+        "owasp_llm_top10": [
+          "LLM02"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "1.2. Privacy violations"
+        ]
+      }
+    },
+    {
+      "number": "GR-03.1",
+      "category": "Transparency & disclosure",
+      "description": "Disclose clearly to users and downstream consumers when they are interacting with an AI system or reading AI-generated content.",
+      "implementation_hints": "Attach explicit AI disclosure headers, metadata flags, or UI notices to all generated responses.",
+      "verification_test": "Verify response envelopes or UI rendering templates include an explicit AI-generated disclosure indicator.",
+      "applicability": "user-facing AI and content generation systems",
+      "standard_references": "EU AI Act Art 13, 50 | NIST GOVERN-4, MAP-1, MEASURE-2 | OWASP LLM09 | MIT 4.3. Lack of transparency or interpretability; 3.1. Pollution of information ecosystem and loss of shared reality",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          13,
+          50
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-4",
+          "MAP-1",
+          "MEASURE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM09"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "4.3. Lack of transparency or interpretability",
+          "3.1. Pollution of information ecosystem and loss of shared reality"
+        ]
+      }
+    },
+    {
+      "number": "GR-03.2",
+      "category": "Transparency & disclosure",
+      "description": "Ground generated claims in verifiable source citations and cross-check citations against the underlying corpus or files.",
+      "implementation_hints": "Require structured citations on model outputs and deterministically verify file/document existence and line/span bounds.",
+      "verification_test": "Verify post-generation citation validation logic that checks cited sources exist and demotes or flags unverified claims.",
+      "applicability": "RAG, coding, compliance, and analytical AI systems",
+      "standard_references": "EU AI Act Art 13 | NIST MEASURE-2, MANAGE-2 | OWASP LLM09 | MIT 3.2. False or misleading information; 4.3. Lack of transparency or interpretability",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          13
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM09"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "3.2. False or misleading information",
+          "4.3. Lack of transparency or interpretability"
+        ]
+      }
+    },
+    {
+      "number": "GR-03.3",
+      "category": "Transparency & disclosure",
+      "description": "Provide model/system cards documenting model architecture, version, known limitations, and evaluation benchmarks.",
+      "implementation_hints": "Ship structured system/model metadata alongside code and expose version/capability descriptors via CLI or API.",
+      "verification_test": "Verify presence of structured system metadata, version identifiers, and documented limitations.",
+      "applicability": "any AI system",
+      "standard_references": "EU AI Act Art 11, 13, 53 | NIST GOVERN-1, MAP-1, MEASURE-4 | MIT 4.3. Lack of transparency or interpretability",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          11,
+          13,
+          53
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-1",
+          "MAP-1",
+          "MEASURE-4"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "4.3. Lack of transparency or interpretability"
+        ]
+      }
+    },
+    {
+      "number": "GR-03.4",
+      "category": "Transparency & disclosure",
+      "description": "Expose interpretable reasoning traces, confidence indicators, or uncertainty warnings on automated assessments.",
+      "implementation_hints": "Include structured reasoning fields, uncertainty/inconclusive states, and audit trails in assessment outputs.",
+      "verification_test": "Verify output schemas require explicit reasoning and support inconclusive/uncertainty states rather than forced binary verdicts.",
+      "applicability": "decision-support and analytical AI systems",
+      "standard_references": "EU AI Act Art 13, 14 | NIST MEASURE-2, MANAGE-1 | OWASP LLM09 | MIT 4.3. Lack of transparency or interpretability; 5.1. Overreliance and unsafe use",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          13,
+          14
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-1"
+        ],
+        "owasp_llm_top10": [
+          "LLM09"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "4.3. Lack of transparency or interpretability",
+          "5.1. Overreliance and unsafe use"
+        ]
+      }
+    },
+    {
+      "number": "GR-04.1",
+      "category": "Human oversight",
+      "description": "Require human-in-the-loop (HITL) approval before executing high-impact, irreversible, or state-mutating actions.",
+      "implementation_hints": "Gate destructive, financial, or external write tool calls behind an explicit confirmation token or approval queue.",
+      "verification_test": "Verify that state-mutating or high-risk actions check for explicit user/operator approval before execution.",
+      "applicability": "agentic and tool-using AI systems",
+      "standard_references": "EU AI Act Art 14 | NIST GOVERN-3, MAP-3, MANAGE-2 | OWASP LLM06 | ATLAS AML.M0018 | MIT 5.2. Loss of human agency and autonomy; 7.2. AI possessing dangerous capabilities",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          14
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-3",
+          "MAP-3",
+          "MANAGE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM06"
+        ],
+        "atlas_mitigations": [
+          "AML.M0018"
+        ],
+        "mit_subdomains": [
+          "5.2. Loss of human agency and autonomy",
+          "7.2. AI possessing dangerous capabilities"
+        ]
+      }
+    },
+    {
+      "number": "GR-04.2",
+      "category": "Human oversight",
+      "description": "Provide an immediate stop, cancellation, or kill-switch mechanism to halt autonomous loops and background tasks.",
+      "implementation_hints": "Enforce hard iteration caps, timeouts, and signal/cancellation checks inside agent and audit loops.",
+      "verification_test": "Verify bounded loop counters (e.g., max revisions/steps) and clean abort handling in execution drivers.",
+      "applicability": "autonomous and multi-step AI pipelines",
+      "standard_references": "EU AI Act Art 14 | NIST GOVERN-3, MANAGE-3 | OWASP LLM06, LLM10 | MIT 7.4. Lack of capability to control AI; 5.2. Loss of human agency and autonomy",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          14
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-3",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM06",
+          "LLM10"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "7.4. Lack of capability to control AI",
+          "5.2. Loss of human agency and autonomy"
+        ]
+      }
+    },
+    {
+      "number": "GR-04.3",
+      "category": "Human oversight",
+      "description": "Support human override, correction, and escalation queues for contested or ambiguous model verdicts.",
+      "implementation_hints": "Surface unresolved disputes as explicit open_questions for human review rather than silently masking disagreements.",
+      "verification_test": "Verify that unconverged or contested items are collected into an explicit open_questions or escalation structure.",
+      "applicability": "decision-support and auditing AI systems",
+      "standard_references": "EU AI Act Art 14 | NIST GOVERN-3, MANAGE-1, MANAGE-4 | OWASP LLM09 | MIT 5.1. Overreliance and unsafe use",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          14
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-3",
+          "MANAGE-1",
+          "MANAGE-4"
+        ],
+        "owasp_llm_top10": [
+          "LLM09"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "5.1. Overreliance and unsafe use"
+        ]
+      }
+    },
+    {
+      "number": "GR-04.4",
+      "category": "Human oversight",
+      "description": "Prevent automation bias by presenting counter-evidence, adversarial critiques, and verification status alongside conclusions.",
+      "implementation_hints": "Run an independent adversarial critique pass and highlight demoted or weakly supported claims in reports.",
+      "verification_test": "Verify presence of adversarial review/critique stages and explicit demotion markers in user-facing reports.",
+      "applicability": "analytical, compliance, and recommendation AI systems",
+      "standard_references": "EU AI Act Art 14 | NIST MAP-3, MEASURE-2 | OWASP LLM09 | MIT 5.1. Overreliance and unsafe use",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          14
+        ],
+        "nist_ai_rmf_functions": [
+          "MAP-3",
+          "MEASURE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM09"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "5.1. Overreliance and unsafe use"
+        ]
+      }
+    },
+    {
+      "number": "GR-05.1",
+      "category": "Robustness & accuracy",
+      "description": "Validate all LLM outputs against strict structural and type schemas before downstream consumption or persistence.",
+      "implementation_hints": "Parse and validate every LLM response against JSON Schema or Pydantic models with extra='forbid'; reject malformed payloads.",
+      "verification_test": "Verify strict schema validation on LLM responses and final report artifacts prior to writing or acting on them.",
+      "applicability": "all structured-output LLM and agentic systems",
+      "standard_references": "EU AI Act Art 15 | NIST MEASURE-2, MANAGE-2 | OWASP LLM05, LLM09 | ATLAS AML.M0015 | MIT 7.3. Lack of capability or robustness",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM05",
+          "LLM09"
+        ],
+        "atlas_mitigations": [
+          "AML.M0015"
+        ],
+        "mit_subdomains": [
+          "7.3. Lack of capability or robustness"
+        ]
+      }
+    },
+    {
+      "number": "GR-05.2",
+      "category": "Robustness & accuracy",
+      "description": "Detect and mitigate hallucinations by cross-verifying model assertions against deterministic ground-truth sources.",
+      "implementation_hints": "Resolve file paths, line numbers, or database keys cited by the LLM and automatically demote unverified claims.",
+      "verification_test": "Verify deterministic cross-verification of model citations/facts and automatic demotion + logging on failure.",
+      "applicability": "all generative AI systems making factual or code assertions",
+      "standard_references": "EU AI Act Art 15 | NIST MEASURE-2, MANAGE-2 | OWASP LLM09 | MIT 3.2. False or misleading information; 7.3. Lack of capability or robustness",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM09"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "3.2. False or misleading information",
+          "7.3. Lack of capability or robustness"
+        ]
+      }
+    },
+    {
+      "number": "GR-05.3",
+      "category": "Robustness & accuracy",
+      "description": "Handle malformed inputs, transient failures, and partial responses gracefully with deterministic error codes and recovery paths.",
+      "implementation_hints": "Wrap file/JSON parsing and phase transitions in explicit error handlers that emit actionable error messages and non-zero exit codes.",
+      "verification_test": "Verify deterministic validation error handling and non-zero exit codes when inputs or responses are missing or invalid.",
+      "applicability": "all AI systems",
+      "standard_references": "EU AI Act Art 15 | NIST MEASURE-2, MANAGE-3 | OWASP LLM05, LLM10 | MIT 7.3. Lack of capability or robustness",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM05",
+          "LLM10"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "7.3. Lack of capability or robustness"
+        ]
+      }
+    },
+    {
+      "number": "GR-05.4",
+      "category": "Robustness & accuracy",
+      "description": "Maintain an automated regression and unit test suite covering pipeline invariants, edge cases, and failure modes.",
+      "implementation_hints": "Ship automated pytest tests verifying happy paths, invalid inputs, hallucination demotions, and schema drift.",
+      "verification_test": "Verify existence of automated tests covering schema validation, citation verification, and pipeline phase transitions.",
+      "applicability": "all AI systems",
+      "standard_references": "EU AI Act Art 15, 43 | NIST MEASURE-1, MEASURE-2, MEASURE-4 | MIT 7.3. Lack of capability or robustness",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15,
+          43
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-1",
+          "MEASURE-2",
+          "MEASURE-4"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "7.3. Lack of capability or robustness"
+        ]
+      }
+    },
+    {
+      "number": "GR-05.5",
+      "category": "Robustness & accuracy",
+      "description": "Enforce multi-agent or adversarial cross-checking to reduce single-pass model blind spots and drift.",
+      "implementation_hints": "Pair primary assessment phases with bounded adversarial red-team audit phases that can CONFIRM, REVISE, or INVESTIGATE.",
+      "verification_test": "Verify implementation of adversarial audit phases that critique and apply deltas to primary LLM outputs.",
+      "applicability": "high-assurance analytical and agentic systems",
+      "standard_references": "EU AI Act Art 15 | NIST MEASURE-2, MANAGE-2 | OWASP LLM09 | ATLAS AML.M0003 | MIT 7.3. Lack of capability or robustness",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM09"
+        ],
+        "atlas_mitigations": [
+          "AML.M0003"
+        ],
+        "mit_subdomains": [
+          "7.3. Lack of capability or robustness"
+        ]
+      }
+    },
+    {
+      "number": "GR-06.1",
+      "category": "Adversarial security",
+      "description": "Defend against direct and indirect prompt injection by separating untrusted data from system instructions and constraining model outputs.",
+      "implementation_hints": "Isolate untrusted repository content into structured data fields, forbid prose execution, and require strict JSON schema adherence.",
+      "verification_test": "Verify that untrusted inputs are structured separately from instructions and responses are strictly validated as data.",
+      "applicability": "all LLM and agentic systems processing untrusted inputs",
+      "standard_references": "EU AI Act Art 15 | NIST MAP-3, MEASURE-2, MANAGE-3 | OWASP LLM01, LLM08 | ATLAS AML.M0015, AML.M0019 | MIT 2.2. AI system security vulnerabilities and attacks",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MAP-3",
+          "MEASURE-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM08"
+        ],
+        "atlas_mitigations": [
+          "AML.M0015",
+          "AML.M0019"
+        ],
+        "mit_subdomains": [
+          "2.2. AI system security vulnerabilities and attacks"
+        ]
+      }
+    },
+    {
+      "number": "GR-06.2",
+      "category": "Adversarial security",
+      "description": "Sanitize and validate all model-generated strings, paths, and parameters before passing them to OS, filesystem, shell, or database APIs.",
+      "implementation_hints": "Resolve paths against project_root, reject '..' traversal, avoid shell=True, and validate identifiers against strict regexes.",
+      "verification_test": "Verify path traversal checks (relative_to project_root) and absence of unsanitized shell interpolation.",
+      "applicability": "all AI systems interacting with filesystems, shells, or APIs",
+      "standard_references": "EU AI Act Art 15 | NIST MEASURE-2, MANAGE-3 | OWASP LLM05, LLM06 | ATLAS AML.M0015, AML.M0018 | MIT 2.2. AI system security vulnerabilities and attacks",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM05",
+          "LLM06"
+        ],
+        "atlas_mitigations": [
+          "AML.M0015",
+          "AML.M0018"
+        ],
+        "mit_subdomains": [
+          "2.2. AI system security vulnerabilities and attacks"
+        ]
+      }
+    },
+    {
+      "number": "GR-06.3",
+      "category": "Adversarial security",
+      "description": "Enforce resource bounds, input size limits, and loop caps to prevent denial-of-service or unbounded token consumption.",
+      "implementation_hints": "Truncate ingested manifest/doc previews (e.g., 6000 chars), cap file walks (e.g., 200 files), and bound audit revisions.",
+      "verification_test": "Verify explicit character/file limits on context gathering and hard upper bounds on retry/revision loops.",
+      "applicability": "all LLM and agentic systems",
+      "standard_references": "EU AI Act Art 15 | NIST MANAGE-3 | OWASP LLM10 | ATLAS AML.M0004 | MIT 2.2. AI system security vulnerabilities and attacks",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM10"
+        ],
+        "atlas_mitigations": [
+          "AML.M0004"
+        ],
+        "mit_subdomains": [
+          "2.2. AI system security vulnerabilities and attacks"
+        ]
+      }
+    },
+    {
+      "number": "GR-06.4",
+      "category": "Adversarial security",
+      "description": "Prevent system prompt leakage and sensitive internal context exposure in user-facing or downstream outputs.",
+      "implementation_hints": "Emit only validated contract fields in final reports and agent wrappers; strip internal prompts and raw source excerpts.",
+      "verification_test": "Verify that external output contracts exclude raw system prompts, credentials, and unrestricted source dumps.",
+      "applicability": "all LLM systems",
+      "standard_references": "EU AI Act Art 15 | NIST MEASURE-2, MANAGE-3 | OWASP LLM02, LLM07 | ATLAS AML.M0002, AML.M0015 | MIT 2.2. AI system security vulnerabilities and attacks; 1.2. Privacy violations",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM02",
+          "LLM07"
+        ],
+        "atlas_mitigations": [
+          "AML.M0002",
+          "AML.M0015"
+        ],
+        "mit_subdomains": [
+          "2.2. AI system security vulnerabilities and attacks",
+          "1.2. Privacy violations"
+        ]
+      }
+    },
+    {
+      "number": "GR-06.5",
+      "category": "Adversarial security",
+      "description": "Conduct regular adversarial red-teaming against model verdicts and evidence claims under strict read-scope constraints.",
+      "implementation_hints": "Run dedicated adversary phases constrained to auditing existing citations without inventing new scope.",
+      "verification_test": "Verify adversary instructions and delta application forbid inventing new IDs or expanding scope.",
+      "applicability": "all high-assurance AI systems",
+      "standard_references": "EU AI Act Art 15, 55 | NIST MEASURE-2, MANAGE-2 | OWASP LLM01, LLM09 | ATLAS AML.M0003 | MIT 2.2. AI system security vulnerabilities and attacks",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15,
+          55
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM09"
+        ],
+        "atlas_mitigations": [
+          "AML.M0003"
+        ],
+        "mit_subdomains": [
+          "2.2. AI system security vulnerabilities and attacks"
+        ]
+      }
+    },
+    {
+      "number": "GR-07.1",
+      "category": "Privacy & data protection",
+      "description": "Minimize sensitive and personal data exposure by restricting context collection to necessary manifests and bounded file excerpts.",
+      "implementation_hints": "Read only curated manifest filenames with character caps and skip hidden/credential directories during project walks.",
+      "verification_test": "Verify that context collection skips dotfiles/environments and enforces strict character and file count limits.",
+      "applicability": "all AI systems accessing user or repository data",
+      "standard_references": "EU AI Act Art 10, 15 | NIST GOVERN-1, MAP-2, MANAGE-3 | OWASP LLM02 | ATLAS AML.M0012 | MIT 1.2. Privacy violations",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-1",
+          "MAP-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM02"
+        ],
+        "atlas_mitigations": [
+          "AML.M0012"
+        ],
+        "mit_subdomains": [
+          "1.2. Privacy violations"
+        ]
+      }
+    },
+    {
+      "number": "GR-07.2",
+      "category": "Privacy & data protection",
+      "description": "Prevent unauthorized outbound network exfiltration of codebase or user data during inference and pipeline execution.",
+      "implementation_hints": "Execute assessment pipelines purely locally via disk-queue exchanges without opening outbound network sockets.",
+      "verification_test": "Verify that runtime pipeline modules make zero network requests and never import or invoke external HTTP/LLM clients.",
+      "applicability": "all enterprise and local-first AI tools",
+      "standard_references": "EU AI Act Art 15 | NIST GOVERN-6, MANAGE-3 | OWASP LLM02, LLM06 | ATLAS AML.M0018 | MIT 1.2. Privacy violations; 2.2. AI system security vulnerabilities and attacks",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-6",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM02",
+          "LLM06"
+        ],
+        "atlas_mitigations": [
+          "AML.M0018"
+        ],
+        "mit_subdomains": [
+          "1.2. Privacy violations",
+          "2.2. AI system security vulnerabilities and attacks"
+        ]
+      }
+    },
+    {
+      "number": "GR-07.3",
+      "category": "Privacy & data protection",
+      "description": "Scrub or exclude secrets, API keys, and credentials from logs, artifacts, and model context windows.",
+      "implementation_hints": "Never read .env or credential files into prompts and avoid hardcoding or logging tokens in pipeline state.",
+      "verification_test": "Verify that .env and secret files are excluded from manifest candidate lists and no credentials appear in artifacts.",
+      "applicability": "all AI systems",
+      "standard_references": "EU AI Act Art 10, 15 | NIST MANAGE-3 | OWASP LLM02 | MIT 1.2. Privacy violations",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM02"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "1.2. Privacy violations"
+        ]
+      }
+    },
+    {
+      "number": "GR-07.4",
+      "category": "Privacy & data protection",
+      "description": "Confine all runtime state, temporary files, and reports to a designated, git-ignorable workspace directory.",
+      "implementation_hints": "Write all run artifacts, queues, logs, and reports exclusively beneath <project_root>/.armor/.",
+      "verification_test": "Verify that all runtime file writes target <project_root>/.armor/ (or atomic temp files in the same directory).",
+      "applicability": "all local and repository-auditing AI tools",
+      "standard_references": "EU AI Act Art 10, 12 | NIST GOVERN-1, MANAGE-3 | OWASP LLM02 | MIT 1.2. Privacy violations",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10,
+          12
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-1",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM02"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "1.2. Privacy violations"
+        ]
+      }
+    },
+    {
+      "number": "GR-08.1",
+      "category": "Fairness & non-discrimination",
+      "description": "Evaluate and document affected user populations and potential disparate impacts during system profiling.",
+      "implementation_hints": "Require user_population and data_sensitivity fields in the Phase 2 system_profile schema.",
+      "verification_test": "Verify that the triage system_profile schema requires explicit user_population profiling.",
+      "applicability": "all AI systems",
+      "standard_references": "EU AI Act Art 10, 13, 27 | NIST MAP-1, MAP-2, MEASURE-2 | MIT 1.1. Unfair discrimination and misrepresentation",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10,
+          13,
+          27
+        ],
+        "nist_ai_rmf_functions": [
+          "MAP-1",
+          "MAP-2",
+          "MEASURE-2"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "1.1. Unfair discrimination and misrepresentation"
+        ]
+      }
+    },
+    {
+      "number": "GR-08.2",
+      "category": "Fairness & non-discrimination",
+      "description": "Apply consistent, deterministic scoring weights and evaluation criteria across all assessed components or subjects.",
+      "implementation_hints": "Compute posture scores using a fixed, transparent weight table (VERDICT_WEIGHT) and deterministic sorting.",
+      "verification_test": "Verify that coverage and suggestion rankings are computed deterministically from a fixed weight map.",
+      "applicability": "scoring, ranking, and auditing AI systems",
+      "standard_references": "EU AI Act Art 10, 15 | NIST MEASURE-1, MEASURE-2 | MIT 1.1. Unfair discrimination and misrepresentation",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-1",
+          "MEASURE-2"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "1.1. Unfair discrimination and misrepresentation"
+        ]
+      }
+    },
+    {
+      "number": "GR-08.3",
+      "category": "Fairness & non-discrimination",
+      "description": "Exclude inapplicable criteria from scoring denominators so specialized systems are not unfairly penalized.",
+      "implementation_hints": "Exclude rows with verdict == 'n/a' from in_scope_count and max_possible_points when computing coverage percentages.",
+      "verification_test": "Verify that 'n/a' verdicts are excluded from the coverage denominator in report rollup calculations.",
+      "applicability": "evaluation and compliance scoring systems",
+      "standard_references": "EU AI Act Art 9, 15 | NIST MEASURE-1, MEASURE-2 | MIT 1.1. Unfair discrimination and misrepresentation",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          9,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-1",
+          "MEASURE-2"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "1.1. Unfair discrimination and misrepresentation"
+        ]
+      }
+    },
+    {
+      "number": "GR-08.4",
+      "category": "Fairness & non-discrimination",
+      "description": "Audit subjective classifications through an independent review pass to detect biased or unsubstantiated scoping decisions.",
+      "implementation_hints": "Subject all Phase 2 applicability tags (applies/partial_scope/n_a) to the Phase 3 triage-audit red-team loop.",
+      "verification_test": "Verify that triage applicability decisions are audited by triage-audit before conformance scoring proceeds.",
+      "applicability": "classification and triage AI systems",
+      "standard_references": "EU AI Act Art 10, 14 | NIST MEASURE-2, MANAGE-2 | MIT 1.1. Unfair discrimination and misrepresentation",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          10,
+          14
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-2"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "1.1. Unfair discrimination and misrepresentation"
+        ]
+      }
+    },
+    {
+      "number": "GR-09.1",
+      "category": "Content safety",
+      "description": "Enforce output content quality and forbid vague, boilerplate, or non-actionable safety/remediation advice.",
+      "implementation_hints": "Instruct the model with explicit remediation quality rules and a list of banned boilerplate phrases.",
+      "verification_test": "Verify that conformance instructions mandate codebase-specific, action-leading remediations and list banned phrases.",
+      "applicability": "advisory, code-review, and remediation-generating AI systems",
+      "standard_references": "EU AI Act Art 13, 15 | NIST MEASURE-2, MANAGE-2 | OWASP LLM05, LLM09 | MIT 5.1. Overreliance and unsafe use",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          13,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-2"
+        ],
+        "owasp_llm_top10": [
+          "LLM05",
+          "LLM09"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "5.1. Overreliance and unsafe use"
+        ]
+      }
+    },
+    {
+      "number": "GR-09.2",
+      "category": "Content safety",
+      "description": "Escape and sanitize untrusted or model-generated strings before rendering them into Markdown tables or reports.",
+      "implementation_hints": "Escape pipe characters ('|') and normalize newlines when rendering model reasoning and actions into Markdown tables.",
+      "verification_test": "Verify Markdown rendering functions escape '|' and newlines in table cells.",
+      "applicability": "systems generating Markdown or HTML reports from LLM outputs",
+      "standard_references": "EU AI Act Art 15 | NIST MANAGE-3 | OWASP LLM05 | MIT 2.2. AI system security vulnerabilities and attacks",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM05"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "2.2. AI system security vulnerabilities and attacks"
+        ]
+      }
+    },
+    {
+      "number": "GR-09.3",
+      "category": "Content safety",
+      "description": "Provide safe, deterministic fallback guidance whenever model-generated remediation text is missing or inconclusive.",
+      "implementation_hints": "Supply deterministic fallback action strings for inconclusive or empty-remediation rows during report generation.",
+      "verification_test": "Verify report suggestion builder provides explicit fallback action strings when remediation is empty.",
+      "applicability": "advisory and reporting AI systems",
+      "standard_references": "EU AI Act Art 13, 15 | NIST MANAGE-2, MANAGE-3 | OWASP LLM09 | MIT 5.1. Overreliance and unsafe use",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          13,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MANAGE-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM09"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "5.1. Overreliance and unsafe use"
+        ]
+      }
+    },
+    {
+      "number": "GR-09.4",
+      "category": "Content safety",
+      "description": "Constrain agent wrapper summaries to concise, bounded notes free of raw source code, citations, or prompt instructions.",
+      "implementation_hints": "Enforce a strict <200 character single-line summary note in the agent YAML verdict contract.",
+      "verification_test": "Verify agent wrapper specification enforces bounded notes (<200 chars) with no source excerpts or prompts.",
+      "applicability": "agent wrappers and automated CI/CD gates",
+      "standard_references": "EU AI Act Art 13, 15 | NIST GOVERN-4, MANAGE-3 | OWASP LLM02, LLM05 | MIT 1.2. Privacy violations",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          13,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-4",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM02",
+          "LLM05"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "1.2. Privacy violations"
+        ]
+      }
+    },
+    {
+      "number": "GR-10.1",
+      "category": "Logging, monitoring & incident response",
+      "description": "Maintain an immutable, timestamped run directory recording the input/output artifact of every pipeline phase.",
+      "implementation_hints": "Create UTC-timestamped directories under .armor/runs/<iso>/ and persist numbered JSON/MD artifacts for Phases 1\u20136.",
+      "verification_test": "Verify that new_run creates UTC-timestamped run directories and each phase persists its numbered artifact.",
+      "applicability": "all production and auditing AI pipelines",
+      "standard_references": "EU AI Act Art 12, 19 | NIST GOVERN-1, MEASURE-2, MANAGE-4 | ATLAS AML.M0016 | MIT 4.3. Lack of transparency or interpretability",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          12,
+          19
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-1",
+          "MEASURE-2",
+          "MANAGE-4"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [
+          "AML.M0016"
+        ],
+        "mit_subdomains": [
+          "4.3. Lack of transparency or interpretability"
+        ]
+      }
+    },
+    {
+      "number": "GR-10.2",
+      "category": "Logging, monitoring & incident response",
+      "description": "Log every detected model hallucination or rejected citation to an append-only structured incident log.",
+      "implementation_hints": "Append JSONL records with UTC timestamp, phase, sid, citation, and rejection reason to .armor/hallucination_log.jsonl.",
+      "verification_test": "Verify that rejected citations in conform and conform-audit are appended to hallucination_log.jsonl.",
+      "applicability": "all citation-backed generative AI systems",
+      "standard_references": "EU AI Act Art 12, 73 | NIST MEASURE-2, MANAGE-4 | OWASP LLM09 | ATLAS AML.M0016 | MIT 3.2. False or misleading information; 4.3. Lack of transparency or interpretability",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          12,
+          73
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-4"
+        ],
+        "owasp_llm_top10": [
+          "LLM09"
+        ],
+        "atlas_mitigations": [
+          "AML.M0016"
+        ],
+        "mit_subdomains": [
+          "3.2. False or misleading information",
+          "4.3. Lack of transparency or interpretability"
+        ]
+      }
+    },
+    {
+      "number": "GR-10.3",
+      "category": "Logging, monitoring & incident response",
+      "description": "Record full multi-round adversarial audit trails capturing per-round verdict counts, critiques, and before/after row diffs.",
+      "implementation_hints": "Persist audit_trail arrays in 03_triage_audit.json and 05_conformance_audit.json with before/after revision records.",
+      "verification_test": "Verify that audit phases record per-round verdict_counts and before/after diffs in audit_trail.",
+      "applicability": "systems with multi-step or adversarial review loops",
+      "standard_references": "EU AI Act Art 12 | NIST MEASURE-2, MANAGE-4 | MIT 4.3. Lack of transparency or interpretability",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          12
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-4"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "4.3. Lack of transparency or interpretability"
+        ]
+      }
+    },
+    {
+      "number": "GR-10.4",
+      "category": "Logging, monitoring & incident response",
+      "description": "Enforce mandatory skill-usage telemetry tracking across parent skills and delegated sub-agents.",
+      "implementation_hints": "Gate skill execution on emitting start and end telemetry events with propagated PARENT_TRACKERID.",
+      "verification_test": "Verify that SKILL.md defines a mandatory telemetry gate before tool calls, sub-agents, and final responses.",
+      "applicability": "marketplace skills and multi-agent plugins",
+      "standard_references": "EU AI Act Art 12 | NIST GOVERN-1, MANAGE-4 | ATLAS AML.M0016 | MIT 4.3. Lack of transparency or interpretability",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          12
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-1",
+          "MANAGE-4"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [
+          "AML.M0016"
+        ],
+        "mit_subdomains": [
+          "4.3. Lack of transparency or interpretability"
+        ]
+      }
+    },
+    {
+      "number": "GR-10.5",
+      "category": "Logging, monitoring & incident response",
+      "description": "Expose a deterministic CLI status inspection command reporting live progress across all pipeline phases.",
+      "implementation_hints": "Support `--status` on the pipeline CLI to inspect whether each phase is pending, awaiting-llm, response-ready, or done.",
+      "verification_test": "Verify that `pipeline <project> --status` reports the current run root and the state of every phase.",
+      "applicability": "multi-phase AI pipelines",
+      "standard_references": "EU AI Act Art 12, 14 | NIST GOVERN-3, MANAGE-4 | MIT 4.3. Lack of transparency or interpretability",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          12,
+          14
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-3",
+          "MANAGE-4"
+        ],
+        "owasp_llm_top10": [],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "4.3. Lack of transparency or interpretability"
+        ]
+      }
+    },
+    {
+      "number": "GR-11.1",
+      "category": "Supply-chain & component integrity",
+      "description": "Version and content-address all external standards, catalogs, and reference artifacts using cryptographic SHA256 hashes.",
+      "implementation_hints": "Commit catalog and standard updates via content-addressed `<date>__<sha8>` directories, `latest.json`, and `history.jsonl`.",
+      "verification_test": "Verify content-addressed SHA256 hashing and manifest/history tracking in ai_standards_versioning.py.",
+      "applicability": "systems depending on external catalogs, standards, or model artifacts",
+      "standard_references": "EU AI Act Art 15, 53 | NIST GOVERN-6, MAP-2, MANAGE-3 | OWASP LLM03 | ATLAS AML.M0007, AML.M0014 | MIT 2.2. AI system security vulnerabilities and attacks",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15,
+          53
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-6",
+          "MAP-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM03"
+        ],
+        "atlas_mitigations": [
+          "AML.M0007",
+          "AML.M0014"
+        ],
+        "mit_subdomains": [
+          "2.2. AI system security vulnerabilities and attacks"
+        ]
+      }
+    },
+    {
+      "number": "GR-11.2",
+      "category": "Supply-chain & component integrity",
+      "description": "Compute deterministic source fingerprints of the target codebase to detect concurrent edits or environment drift.",
+      "implementation_hints": "Hash sorted relative paths and modification timestamps across tracked source extensions via project_fingerprint().",
+      "verification_test": "Verify that project_fingerprint() produces a deterministic SHA256 prefix that changes whenever a source file is edited.",
+      "applicability": "codebase analysis and auditing tools",
+      "standard_references": "EU AI Act Art 15 | NIST MEASURE-2, MANAGE-3 | OWASP LLM03 | ATLAS AML.M0014 | MIT 7.3. Lack of capability or robustness",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM03"
+        ],
+        "atlas_mitigations": [
+          "AML.M0014"
+        ],
+        "mit_subdomains": [
+          "7.3. Lack of capability or robustness"
+        ]
+      }
+    },
+    {
+      "number": "GR-11.3",
+      "category": "Supply-chain & component integrity",
+      "description": "Minimize third-party runtime dependencies and isolate network-fetching utilities from the core execution runtime.",
+      "implementation_hints": "Require only pydantic at runtime (stdlib for everything else); isolate requests/pyyaml to offline catalog refresh scripts.",
+      "verification_test": "Verify that core `armor/` runtime modules import only stdlib and pydantic.",
+      "applicability": "all software and AI plugins",
+      "standard_references": "EU AI Act Art 15 | NIST GOVERN-6, MANAGE-3 | OWASP LLM03 | ATLAS AML.M0014 | MIT 2.2. AI system security vulnerabilities and attacks",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-6",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM03"
+        ],
+        "atlas_mitigations": [
+          "AML.M0014"
+        ],
+        "mit_subdomains": [
+          "2.2. AI system security vulnerabilities and attacks"
+        ]
+      }
+    },
+    {
+      "number": "GR-11.4",
+      "category": "Supply-chain & component integrity",
+      "description": "Keep packaged JSON Schemas byte-synchronized with runtime data models and provide automated drift verification.",
+      "implementation_hints": "Ship `posture_report.schema.json` generated from `PostureReport.model_json_schema()` and enforce byte equality in tests.",
+      "verification_test": "Verify `--write-schema` and test assertions that `posture_report.schema.json` byte-equals `PostureReport.model_json_schema()`.",
+      "applicability": "all schema-driven AI pipelines",
+      "standard_references": "EU AI Act Art 15 | NIST MEASURE-2, MANAGE-3 | OWASP LLM03, LLM05 | MIT 7.3. Lack of capability or robustness",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MEASURE-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM03",
+          "LLM05"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "7.3. Lack of capability or robustness"
+        ]
+      }
+    },
+    {
+      "number": "GR-12.1",
+      "category": "Agentic autonomy & action safety",
+      "description": "Enforce strict phase ordering so downstream agent actions cannot execute before prerequisite artifacts are verified.",
+      "implementation_hints": "Guard each phase entry point with `require_phase_done(run, prerequisite_phase)` and abort with exact unblock instructions.",
+      "verification_test": "Verify that calling later phases before earlier phases raises SystemExit via `require_phase_done`.",
+      "applicability": "multi-step agentic workflows",
+      "standard_references": "EU AI Act Art 14, 15 | NIST GOVERN-3, MANAGE-3 | OWASP LLM06 | ATLAS AML.M0018 | MIT 7.4. Lack of capability to control AI; 5.2. Loss of human agency and autonomy",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          14,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-3",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM06"
+        ],
+        "atlas_mitigations": [
+          "AML.M0018"
+        ],
+        "mit_subdomains": [
+          "7.4. Lack of capability to control AI",
+          "5.2. Loss of human agency and autonomy"
+        ]
+      }
+    },
+    {
+      "number": "GR-12.2",
+      "category": "Agentic autonomy & action safety",
+      "description": "Prevent recursive self-auditing or runaway self-targeting in autonomous agent wrappers.",
+      "implementation_hints": "Enforce a mandatory self-targeting guard in `armor-agent` that refuses paths resolving to `armor-agent-plugin`.",
+      "verification_test": "Verify that the agent wrapper specification mandates a self-targeting refusal returning `verdict: fail` and zeroed counts.",
+      "applicability": "autonomous auditing and delegation agents",
+      "standard_references": "EU AI Act Art 14, 15 | NIST GOVERN-3, MANAGE-3 | OWASP LLM06, LLM10 | ATLAS AML.M0018 | MIT 7.4. Lack of capability to control AI; 7.1. AI pursuing its own goals in conflict with human goals or values",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          14,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-3",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM06",
+          "LLM10"
+        ],
+        "atlas_mitigations": [
+          "AML.M0018"
+        ],
+        "mit_subdomains": [
+          "7.4. Lack of capability to control AI",
+          "7.1. AI pursuing its own goals in conflict with human goals or values"
+        ]
+      }
+    },
+    {
+      "number": "GR-12.3",
+      "category": "Agentic autonomy & action safety",
+      "description": "Protect concurrent file mutations with cross-platform exclusive file locks and atomic write-and-replace primitives.",
+      "implementation_hints": "Provide `exclusive_lock`, `locked_write` (mkstemp + os.replace), and `locked_append` in `file_lock.py`.",
+      "verification_test": "Verify cross-platform locking (`msvcrt` / `fcntl` + `threading.Lock`) and atomic `os.replace` writes in `file_lock.py`.",
+      "applicability": "concurrent or multi-agent local workflows",
+      "standard_references": "EU AI Act Art 15 | NIST MANAGE-3 | OWASP LLM06 | MIT 7.3. Lack of capability or robustness",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM06"
+        ],
+        "atlas_mitigations": [],
+        "mit_subdomains": [
+          "7.3. Lack of capability or robustness"
+        ]
+      }
+    },
+    {
+      "number": "GR-12.4",
+      "category": "Agentic autonomy & action safety",
+      "description": "Constrain red-team adversary agents to read-only verification of cited evidence without expanding scope or inventing findings.",
+      "implementation_hints": "Instruct adversary phases not to read files beyond cited `file:line` spans and ignore any unknown SIDs in apply_deltas.",
+      "verification_test": "Verify `apply_deltas` ignores unknown SIDs (recording them in `unknown_sids`) and preserves original row ordering.",
+      "applicability": "multi-agent and adversarial AI systems",
+      "standard_references": "EU AI Act Art 14, 15 | NIST GOVERN-3, MEASURE-2, MANAGE-3 | OWASP LLM06 | ATLAS AML.M0018 | MIT 7.4. Lack of capability to control AI",
+      "standard_references_detail": {
+        "eu_ai_act_articles": [
+          14,
+          15
+        ],
+        "nist_ai_rmf_functions": [
+          "GOVERN-3",
+          "MEASURE-2",
+          "MANAGE-3"
+        ],
+        "owasp_llm_top10": [
+          "LLM06"
+        ],
+        "atlas_mitigations": [
+          "AML.M0018"
+        ],
+        "mit_subdomains": [
+          "7.4. Lack of capability to control AI"
+        ]
+      }
+    }
+  ]
+}

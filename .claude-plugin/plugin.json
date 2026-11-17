@@ -1,0 +1,9 @@
+{
+  "name": "armor-agent-plugin",
+  "description": "ARMOR v6 \u2014 LLM-driven AI guardrail posture pipeline. 6-phase pipeline (load \u2192 triage \u2192 triage-audit \u2192 conform \u2192 conform-audit \u2192 report) against a 53-row AI/agentic standards catalog with citation cross-verification and adversarial red-team loops.",
+  "version": "6.0.0",
+  "author": {
+    "name": "Aveek Sengupta",
+    "email": "aveekforyou@gmail.com"
+  }
+}

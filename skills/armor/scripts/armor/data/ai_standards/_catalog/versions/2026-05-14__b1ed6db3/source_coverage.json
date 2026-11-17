@@ -1,0 +1,360 @@
+{
+  "totals": {
+    "guardrails": 12,
+    "sub_guardrails": 53
+  },
+  "by_family": {
+    "GR-01": {
+      "family_name": "Risk & impact assessment",
+      "sub_guardrail_count": 5,
+      "eu_ai_act_articles": [
+        6,
+        9,
+        13,
+        27,
+        43
+      ],
+      "nist_ai_rmf_functions": [
+        "GOVERN-1",
+        "GOVERN-4",
+        "MANAGE-1",
+        "MANAGE-2",
+        "MANAGE-3",
+        "MANAGE-4",
+        "MAP-1",
+        "MAP-2",
+        "MAP-3",
+        "MAP-5",
+        "MEASURE-2",
+        "MEASURE-4"
+      ],
+      "owasp_llm_top10": [
+        "LLM01",
+        "LLM09"
+      ],
+      "atlas_mitigations": [
+        "AML.M0015",
+        "AML.M0017"
+      ],
+      "mit_subdomains": [
+        "5.1. Overreliance and unsafe use",
+        "6.1. Power centralization and unfair distribution of benefits",
+        "7.1. AI pursuing its own goals in conflict with human goals or values",
+        "7.3. Lack of capability or robustness"
+      ]
+    },
+    "GR-02": {
+      "family_name": "Data governance",
+      "sub_guardrail_count": 5,
+      "eu_ai_act_articles": [
+        10,
+        15,
+        53
+      ],
+      "nist_ai_rmf_functions": [
+        "GOVERN-1",
+        "GOVERN-6",
+        "MANAGE-2",
+        "MANAGE-3",
+        "MANAGE-4",
+        "MAP-2",
+        "MEASURE-2"
+      ],
+      "owasp_llm_top10": [
+        "LLM02",
+        "LLM04",
+        "LLM08"
+      ],
+      "atlas_mitigations": [
+        "AML.M0006",
+        "AML.M0007",
+        "AML.M0014",
+        "AML.M0018"
+      ],
+      "mit_subdomains": [
+        "1.2. Privacy violations",
+        "2.2. AI system security vulnerabilities and attacks",
+        "4.3. Lack of transparency or interpretability",
+        "7.3. Lack of capability or robustness"
+      ]
+    },
+    "GR-03": {
+      "family_name": "Transparency & disclosure",
+      "sub_guardrail_count": 4,
+      "eu_ai_act_articles": [
+        11,
+        13,
+        14,
+        50,
+        53
+      ],
+      "nist_ai_rmf_functions": [
+        "GOVERN-1",
+        "GOVERN-4",
+        "MANAGE-1",
+        "MANAGE-2",
+        "MAP-1",
+        "MEASURE-2",
+        "MEASURE-4"
+      ],
+      "owasp_llm_top10": [
+        "LLM09"
+      ],
+      "atlas_mitigations": [],
+      "mit_subdomains": [
+        "3.1. Pollution of information ecosystem and loss of shared reality",
+        "3.2. False or misleading information",
+        "4.3. Lack of transparency or interpretability",
+        "5.1. Overreliance and unsafe use"
+      ]
+    },
+    "GR-04": {
+      "family_name": "Human oversight",
+      "sub_guardrail_count": 4,
+      "eu_ai_act_articles": [
+        14
+      ],
+      "nist_ai_rmf_functions": [
+        "GOVERN-3",
+        "MANAGE-1",
+        "MANAGE-2",
+        "MANAGE-3",
+        "MANAGE-4",
+        "MAP-3",
+        "MEASURE-2"
+      ],
+      "owasp_llm_top10": [
+        "LLM06",
+        "LLM09",
+        "LLM10"
+      ],
+      "atlas_mitigations": [
+        "AML.M0018"
+      ],
+      "mit_subdomains": [
+        "5.1. Overreliance and unsafe use",
+        "5.2. Loss of human agency and autonomy",
+        "7.2. AI possessing dangerous capabilities",
+        "7.4. Lack of capability to control AI"
+      ]
+    },
+    "GR-05": {
+      "family_name": "Robustness & accuracy",
+      "sub_guardrail_count": 5,
+      "eu_ai_act_articles": [
+        15,
+        43
+      ],
+      "nist_ai_rmf_functions": [
+        "MANAGE-2",
+        "MANAGE-3",
+        "MEASURE-1",
+        "MEASURE-2",
+        "MEASURE-4"
+      ],
+      "owasp_llm_top10": [
+        "LLM05",
+        "LLM09",
+        "LLM10"
+      ],
+      "atlas_mitigations": [
+        "AML.M0003",
+        "AML.M0015"
+      ],
+      "mit_subdomains": [
+        "3.2. False or misleading information",
+        "7.3. Lack of capability or robustness"
+      ]
+    },
+    "GR-06": {
+      "family_name": "Adversarial security",
+      "sub_guardrail_count": 5,
+      "eu_ai_act_articles": [
+        15,
+        55
+      ],
+      "nist_ai_rmf_functions": [
+        "MANAGE-2",
+        "MANAGE-3",
+        "MAP-3",
+        "MEASURE-2"
+      ],
+      "owasp_llm_top10": [
+        "LLM01",
+        "LLM02",
+        "LLM05",
+        "LLM06",
+        "LLM07",
+        "LLM08",
+        "LLM09",
+        "LLM10"
+      ],
+      "atlas_mitigations": [
+        "AML.M0002",
+        "AML.M0003",
+        "AML.M0004",
+        "AML.M0015",
+        "AML.M0018",
+        "AML.M0019"
+      ],
+      "mit_subdomains": [
+        "1.2. Privacy violations",
+        "2.2. AI system security vulnerabilities and attacks"
+      ]
+    },
+    "GR-07": {
+      "family_name": "Privacy & data protection",
+      "sub_guardrail_count": 4,
+      "eu_ai_act_articles": [
+        10,
+        12,
+        15
+      ],
+      "nist_ai_rmf_functions": [
+        "GOVERN-1",
+        "GOVERN-6",
+        "MANAGE-3",
+        "MAP-2"
+      ],
+      "owasp_llm_top10": [
+        "LLM02",
+        "LLM06"
+      ],
+      "atlas_mitigations": [
+        "AML.M0012",
+        "AML.M0018"
+      ],
+      "mit_subdomains": [
+        "1.2. Privacy violations",
+        "2.2. AI system security vulnerabilities and attacks"
+      ]
+    },
+    "GR-08": {
+      "family_name": "Fairness & non-discrimination",
+      "sub_guardrail_count": 4,
+      "eu_ai_act_articles": [
+        9,
+        10,
+        13,
+        14,
+        15,
+        27
+      ],
+      "nist_ai_rmf_functions": [
+        "MANAGE-2",
+        "MAP-1",
+        "MAP-2",
+        "MEASURE-1",
+        "MEASURE-2"
+      ],
+      "owasp_llm_top10": [],
+      "atlas_mitigations": [],
+      "mit_subdomains": [
+        "1.1. Unfair discrimination and misrepresentation"
+      ]
+    },
+    "GR-09": {
+      "family_name": "Content safety",
+      "sub_guardrail_count": 4,
+      "eu_ai_act_articles": [
+        13,
+        15
+      ],
+      "nist_ai_rmf_functions": [
+        "GOVERN-4",
+        "MANAGE-2",
+        "MANAGE-3",
+        "MEASURE-2"
+      ],
+      "owasp_llm_top10": [
+        "LLM02",
+        "LLM05",
+        "LLM09"
+      ],
+      "atlas_mitigations": [],
+      "mit_subdomains": [
+        "1.2. Privacy violations",
+        "2.2. AI system security vulnerabilities and attacks",
+        "5.1. Overreliance and unsafe use"
+      ]
+    },
+    "GR-10": {
+      "family_name": "Logging, monitoring & incident response",
+      "sub_guardrail_count": 5,
+      "eu_ai_act_articles": [
+        12,
+        14,
+        19,
+        73
+      ],
+      "nist_ai_rmf_functions": [
+        "GOVERN-1",
+        "GOVERN-3",
+        "MANAGE-4",
+        "MEASURE-2"
+      ],
+      "owasp_llm_top10": [
+        "LLM09"
+      ],
+      "atlas_mitigations": [
+        "AML.M0016"
+      ],
+      "mit_subdomains": [
+        "3.2. False or misleading information",
+        "4.3. Lack of transparency or interpretability"
+      ]
+    },
+    "GR-11": {
+      "family_name": "Supply-chain & component integrity",
+      "sub_guardrail_count": 4,
+      "eu_ai_act_articles": [
+        15,
+        53
+      ],
+      "nist_ai_rmf_functions": [
+        "GOVERN-6",
+        "MANAGE-3",
+        "MAP-2",
+        "MEASURE-2"
+      ],
+      "owasp_llm_top10": [
+        "LLM03",
+        "LLM05"
+      ],
+      "atlas_mitigations": [
+        "AML.M0007",
+        "AML.M0014"
+      ],
+      "mit_subdomains": [
+        "2.2. AI system security vulnerabilities and attacks",
+        "7.3. Lack of capability or robustness"
+      ]
+    },
+    "GR-12": {
+      "family_name": "Agentic autonomy & action safety",
+      "sub_guardrail_count": 4,
+      "eu_ai_act_articles": [
+        14,
+        15
+      ],
+      "nist_ai_rmf_functions": [
+        "GOVERN-3",
+        "MANAGE-3",
+        "MEASURE-2"
+      ],
+      "owasp_llm_top10": [
+        "LLM06",
+        "LLM10"
+      ],
+      "atlas_mitigations": [
+        "AML.M0018"
+      ],
+      "mit_subdomains": [
+        "5.2. Loss of human agency and autonomy",
+        "7.1. AI pursuing its own goals in conflict with human goals or values",
+        "7.3. Lack of capability or robustness",
+        "7.4. Lack of capability to control AI"
+      ]
+    }
+  }
+}

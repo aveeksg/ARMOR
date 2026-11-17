@@ -1,0 +1,400 @@
+{
+  "$defs": {
+    "Coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "applicable_only_pct": {
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "title": "Applicable Only Pct",
+          "type": "number"
+        },
+        "by_family": {
+          "items": {
+            "$ref": "#/$defs/FamilyCoverage"
+          },
+          "title": "By Family",
+          "type": "array"
+        },
+        "by_verdict_in_scope": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "By Verdict In Scope",
+          "type": "object"
+        },
+        "earned_points": {
+          "minimum": 0.0,
+          "title": "Earned Points",
+          "type": "number"
+        },
+        "in_scope_count": {
+          "minimum": 0,
+          "title": "In Scope Count",
+          "type": "integer"
+        },
+        "max_possible_points": {
+          "minimum": 0.0,
+          "title": "Max Possible Points",
+          "type": "number"
+        },
+        "overall_pct": {
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "title": "Overall Pct",
+          "type": "number"
+        }
+      },
+      "required": [
+        "overall_pct",
+        "applicable_only_pct",
+        "in_scope_count",
+        "max_possible_points",
+        "earned_points",
+        "by_verdict_in_scope",
+        "by_family"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    },
+    "FamilyCoverage": {
+      "additionalProperties": false,
+      "properties": {
+        "earned": {
+          "minimum": 0.0,
+          "title": "Earned",
+          "type": "number"
+        },
+        "family": {
+          "title": "Family",
+          "type": "string"
+        },
+        "family_name": {
+          "title": "Family Name",
+          "type": "string"
+        },
+        "in_scope": {
+          "minimum": 0,
+          "title": "In Scope",
+          "type": "integer"
+        },
+        "max": {
+          "minimum": 0.0,
+          "title": "Max",
+          "type": "number"
+        },
+        "score_pct": {
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "title": "Score Pct",
+          "type": "number"
+        }
+      },
+      "required": [
+        "family",
+        "family_name",
+        "in_scope",
+        "earned",
+        "max",
+        "score_pct"
+      ],
+      "title": "FamilyCoverage",
+      "type": "object"
+    },
+    "GuardrailRow": {
+      "additionalProperties": false,
+      "properties": {
+        "applicability": {
+          "enum": [
+            "applies",
+            "partial_scope",
+            "n_a",
+            "unknown"
+          ],
+          "title": "Applicability",
+          "type": "string"
+        },
+        "applicability_reason": {
+          "default": "",
+          "title": "Applicability Reason",
+          "type": "string"
+        },
+        "citations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Citations",
+          "type": "array"
+        },
+        "demoted_due_to_hallucination": {
+          "default": false,
+          "title": "Demoted Due To Hallucination",
+          "type": "boolean"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "family": {
+          "title": "Family",
+          "type": "string"
+        },
+        "family_name": {
+          "title": "Family Name",
+          "type": "string"
+        },
+        "gap_summary": {
+          "default": "",
+          "title": "Gap Summary",
+          "type": "string"
+        },
+        "reasoning": {
+          "default": "",
+          "title": "Reasoning",
+          "type": "string"
+        },
+        "remediation": {
+          "default": "",
+          "title": "Remediation",
+          "type": "string"
+        },
+        "sid": {
+          "title": "Sid",
+          "type": "string"
+        },
+        "verdict": {
+          "enum": [
+            "implemented",
+            "partial",
+            "weak",
+            "gap",
+            "inconclusive",
+            "n/a"
+          ],
+          "title": "Verdict",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sid",
+        "family",
+        "family_name",
+        "description",
+        "applicability",
+        "verdict"
+      ],
+      "title": "GuardrailRow",
+      "type": "object"
+    },
+    "OpenQuestion": {
+      "additionalProperties": true,
+      "properties": {
+        "critique": {
+          "default": "",
+          "title": "Critique",
+          "type": "string"
+        },
+        "sid": {
+          "title": "Sid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sid"
+      ],
+      "title": "OpenQuestion",
+      "type": "object"
+    },
+    "Suggestion": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "title": "Action",
+          "type": "string"
+        },
+        "current_verdict": {
+          "enum": [
+            "gap",
+            "inconclusive",
+            "weak",
+            "partial"
+          ],
+          "title": "Current Verdict",
+          "type": "string"
+        },
+        "family": {
+          "title": "Family",
+          "type": "string"
+        },
+        "family_name": {
+          "title": "Family Name",
+          "type": "string"
+        },
+        "family_score_pct": {
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "title": "Family Score Pct",
+          "type": "number"
+        },
+        "gap_summary": {
+          "default": "",
+          "title": "Gap Summary",
+          "type": "string"
+        },
+        "points_unlocked": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Points Unlocked",
+          "type": "number"
+        },
+        "reasoning": {
+          "default": "",
+          "title": "Reasoning",
+          "type": "string"
+        },
+        "remediation": {
+          "default": "",
+          "title": "Remediation",
+          "type": "string"
+        },
+        "sid": {
+          "title": "Sid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sid",
+        "family",
+        "family_name",
+        "current_verdict",
+        "points_unlocked",
+        "family_score_pct",
+        "action"
+      ],
+      "title": "Suggestion",
+      "type": "object"
+    },
+    "Totals": {
+      "additionalProperties": false,
+      "properties": {
+        "by_applicability": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "By Applicability",
+          "type": "object"
+        },
+        "by_verdict": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "By Verdict",
+          "type": "object"
+        },
+        "gaps": {
+          "minimum": 0,
+          "title": "Gaps",
+          "type": "integer"
+        },
+        "guardrails": {
+          "minimum": 0,
+          "title": "Guardrails",
+          "type": "integer"
+        },
+        "inconclusive": {
+          "minimum": 0,
+          "title": "Inconclusive",
+          "type": "integer"
+        },
+        "open_questions": {
+          "minimum": 0,
+          "title": "Open Questions",
+          "type": "integer"
+        },
+        "weak_or_partial": {
+          "minimum": 0,
+          "title": "Weak Or Partial",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "guardrails",
+        "by_applicability",
+        "by_verdict",
+        "gaps",
+        "weak_or_partial",
+        "inconclusive",
+        "open_questions"
+      ],
+      "title": "Totals",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "coverage": {
+      "$ref": "#/$defs/Coverage"
+    },
+    "generated_at": {
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}-\\d{2}-\\d{2}Z$",
+      "title": "Generated At",
+      "type": "string"
+    },
+    "open_questions": {
+      "items": {
+        "$ref": "#/$defs/OpenQuestion"
+      },
+      "title": "Open Questions",
+      "type": "array"
+    },
+    "phase": {
+      "const": "report",
+      "title": "Phase",
+      "type": "string"
+    },
+    "project": {
+      "title": "Project",
+      "type": "string"
+    },
+    "rows": {
+      "items": {
+        "$ref": "#/$defs/GuardrailRow"
+      },
+      "title": "Rows",
+      "type": "array"
+    },
+    "run_dir": {
+      "title": "Run Dir",
+      "type": "string"
+    },
+    "suggestions": {
+      "items": {
+        "$ref": "#/$defs/Suggestion"
+      },
+      "title": "Suggestions",
+      "type": "array"
+    },
+    "system_profile": {
+      "additionalProperties": true,
+      "title": "System Profile",
+      "type": "object"
+    },
+    "totals": {
+      "$ref": "#/$defs/Totals"
+    }
+  },
+  "required": [
+    "phase",
+    "generated_at",
+    "project",
+    "run_dir",
+    "system_profile",
+    "totals",
+    "coverage",
+    "suggestions",
+    "open_questions",
+    "rows"
+  ],
+  "title": "PostureReport",
+  "type": "object"
+}

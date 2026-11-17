@@ -1,0 +1,80 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "armor-agent-plugin"
+version = "6.0.1"
+description = "ARMOR v6 — LLM-driven AI-guardrail posture pipeline with citation cross-verification and adversarial red-team loops."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Aveek Sengupta", email = "aveekforyou@gmail.com" }
+]
+keywords = [
+    "ai-safety",
+    "ai-governance",
+    "guardrails",
+    "eu-ai-act",
+    "nist-ai-rmf",
+    "mitre-atlas",
+    "owasp-llm-top10",
+    "llm-audit",
+    "agentic-security"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+catalog = [
+    "requests>=2.28",
+    "pyyaml>=6.0",
+]
+dev = [
+    "pytest>=7.0",
+    "requests>=2.28",
+    "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/aveeksg/ARMOR"
+Repository = "https://github.com/aveeksg/ARMOR"
+Issues = "https://github.com/aveeksg/ARMOR/issues"
+
+[project.scripts]
+armor = "armor.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "skills/armor/scripts" }
+
+[tool.setuptools.packages.find]
+where = ["skills/armor/scripts"]
+include = ["armor*", "catalog*"]
+
+[tool.setuptools.package-data]
+armor = [
+    "pipeline/schemas/*.json",
+    "data/ai_standards/**/*",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["skills/armor/assets/tests"]
+pythonpath = ["skills/armor/scripts"]
